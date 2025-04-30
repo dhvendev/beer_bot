@@ -399,5 +399,3 @@ async def reset_count():
             update(CountDrink).values(status=False))
         await session.commit()
         return result
-    
-metadata = Base.metadata
