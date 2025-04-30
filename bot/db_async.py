@@ -7,17 +7,13 @@ from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import sessionmaker, selectinload
 from bot.other.other_func import generate_random_number
 from typing import Union, Tuple, Any
-
-# engine = create_async_engine(
-#     "postgresql+asyncpg://dinar:73sazede@localhost:5433/dinar",
-#     echo=False)
+from core.config import settings
 
 engine = create_async_engine(
-    "postgresql+asyncpg://plymv:73sazede@192.168.0.4/beer",
-    echo=True)
+    f"postgresql+asyncpg://{settings.DB_USER}:{settings.DB_PASSWORD}@{settings.DB_HOST}:{settings.DB_PORT}/{settings.DB_NAME}",
+    echo=False)
 
 async_session = sessionmaker(engine, expire_on_commit=False, class_=AsyncSession)
-
 Base = declarative_base()
 
 
@@ -89,20 +85,6 @@ class BoxHistory(Base):
     prize = Column(Integer, default=None)
     created = Column(DateTime, default=datetime.now, nullable=False)
     user = relationship('User', backref='box_history_user')
-
-
-# async def create_tables():
-#     async with engine.begin() as conn:
-#         await conn.run_sync(Base.metadata.create_all)
-# 
-# 
-# async def main():
-#     async with engine.begin() as conn:
-#         await conn.run_sync(Base.metadata.drop_all)  # Опционально: удаляем таблицы перед созданием новых
-#     await create_tables()
-# 
-# asyncio.run(main())
-
 
 async def get_or_add_user(session, tg_id: int, name: str, link: str):
     result = await session.execute(select(User).where(User.tg_id == tg_id))
@@ -417,3 +399,5 @@ async def reset_count():
             update(CountDrink).values(status=False))
         await session.commit()
         return result
+    
+metadata = Base.metadata
