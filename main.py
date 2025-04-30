@@ -78,7 +78,6 @@ async def reset_factor_day(bot: Bot):
 
 async def main():
     print('START BOT')
-    # Настраиваем логирование перед запуском бота
     setup_logging()
     logging.info("bot started")
     
@@ -86,8 +85,6 @@ async def main():
     aiocron.crontab("0 0 * * *", func=reset_status_count, args=(bot,)).start()
     aiocron.crontab("0 12 * * *", func=reset_status_count, args=(bot,)).start()
     aiocron.crontab("0 0 * * *", func=reset_factor_day, args=(bot,)).start()
-    
-    # Добавляем ежедневное обновление файла логов
     aiocron.crontab("1 0 * * *", func=lambda: setup_logging()).start()
     
     storage = MemoryStorage()
