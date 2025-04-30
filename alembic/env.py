@@ -1,6 +1,6 @@
 from logging.config import fileConfig
 from alembic import context
-from bot.db_async import Base, User, Chat, CountDrink, CommandHistory, BanUser, GamesHistory, BoxHistory, metadata
+from core.db_async import Base, User, Chat, CountDrink, CommandHistory, BanUser, GamesHistory, BoxHistory, metadata
 from sqlalchemy import create_engine
 from core.config import settings
 

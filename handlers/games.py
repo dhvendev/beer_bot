@@ -10,7 +10,7 @@ from aiogram.fsm.state import State, StatesGroup
 from aiogram.fsm.context import FSMContext
 from aiogram.methods import SendDice
 from math import ceil
-from bot.db_async import game
+from core.db_async import game
 import json
 from .admin import config_path
 

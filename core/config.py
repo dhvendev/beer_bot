@@ -12,6 +12,9 @@ class Settings(BaseSettings):
     LINK_BOT:str
     LINK_CHAT:str
     LINK_NEWS:str
+
+    ID_CHAT:int
+    ID_NEWS:int
     
     class Config:
         env_file = ".env"

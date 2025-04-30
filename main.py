@@ -7,7 +7,7 @@ from handlers import start, members, drink, tops, box_day, games, admin, me, sho
 from aiogram.fsm.storage.memory import MemoryStorage
 from middlewares.db import DbSessionAndCheckRegister
 import aiocron
-from bot.db_async import reset_count
+from core.db_async import reset_count
 import sys
 from datetime import datetime
 import json
@@ -57,18 +57,18 @@ async def main():
     dp.include_router(games.router) #/clear и /game
     dp.include_router(shop.router) #/shop                       WORK not keyboard
     dp.include_router(admin.router) #/factor и /factor_edit
-
-    dp.include_router(start.router) #/start и /help             WORK not keyboard
     dp.include_router(tops.router)  #/top и /fulltop            WORK not keyboard
-
-    dp.include_router(box_day.router) #/day
     dp.include_router(drink.router) #/drink
-    dp.include_router(me.router) #/me                           WORK
-
-    dp.include_router(members.router)
+    
 
     #dp.include_router(test.router)
 
+
+    #Исправленные:
+    dp.include_router(box_day.router) #/day
+    dp.include_router(start.router) #/start и /help
+    dp.include_router(me.router) #/me
+    dp.include_router(members.router) #check left member from chat
 
 
 

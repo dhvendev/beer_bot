@@ -6,10 +6,10 @@ from aiogram.types import Message, InlineKeyboardButton
 from aiogram.enums import ChatType
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from bot.other.replies import LINK_BOT, BEER_UNIT
-from bot.db_async import update_count_drink
+from core.db_async import update_count_drink
 import aiogram.utils.markdown as mk
 from sqlalchemy.ext.asyncio import AsyncSession
-from bot.db_async import User, Chat, update_drink
+from core.db_async import User, Chat, update_drink
 
 router = Router()
 

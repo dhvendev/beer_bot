@@ -62,7 +62,7 @@ async def cmd_start(message: Message):
         mk.text(mk.hbold('🎉 Beer Bot успешно добавлен! 🎉')),
         mk.text("\n💬 Готовы повеселиться?"),
         mk.text("Используйте команду /drink чтобы начать!"),
-        mk.text("<span class='tg-spoiler'>🎁 Команды: /game /box и другие, ждут вас в личке</span>"),
+        mk.text("<span class='tg-spoiler'>🎁 Команды: /game /day и другие, ждут вас в личке</span>"),
         sep='\n')
     await message.answer(text, parse_mode='HTML', reply_markup=builder.as_markup())
     return

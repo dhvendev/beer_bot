@@ -8,7 +8,7 @@ from bot.other.replies import LINK_BOT, BEER_UNIT
 import aiogram.utils.markdown as mk
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.fsm.context import FSMContext
-from bot.db_async import User
+from core.db_async import User
 from sqlalchemy.ext.asyncio import AsyncSession
 
 

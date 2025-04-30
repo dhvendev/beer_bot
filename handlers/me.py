@@ -3,7 +3,7 @@ from aiogram.filters import Command
 from aiogram.types import Message
 from aiogram.enums import ChatType
 import aiogram.utils.markdown as mk
-from bot.db_async import User
+from core.db_async import User
 
 router = Router()
 
@@ -30,7 +30,7 @@ async def cmd_me(message: Message, user: User):
     tips = mk.text(
         mk.hbold('\n\n💡 Советы:'),
         mk.text('🔹 Увеличь свой шанс успеха в магазине /shop'),
-        mk.text('🔹 Собирай ежедневный бонус командой /box'),
+        mk.text('🔹 Собирай ежедневный бонус командой /day'),
         mk.text('🔹 Испытай свою удачу командой /game'),
         sep="\n")
     

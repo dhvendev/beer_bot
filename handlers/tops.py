@@ -3,9 +3,9 @@ from aiogram.filters import Command
 from aiogram.types import Message, InlineKeyboardButton
 from aiogram.enums import ChatType
 import aiogram.utils.markdown as mk
-from bot.db_async import get_top_local, get_top_global, get_top, get_fulltop
+from core.db_async import get_top_local, get_top_global, get_top, get_fulltop
 
-from bot.db_async import User, Chat
+from core.db_async import User, Chat
 from sqlalchemy.ext.asyncio import AsyncSession
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from bot.other.replies import LINK_BOT

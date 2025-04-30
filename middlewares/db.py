@@ -3,7 +3,7 @@ from aiogram.types import Message, CallbackQuery
 from aiogram import BaseMiddleware
 from aiogram.types import TelegramObject
 from sqlalchemy.ext.asyncio import async_sessionmaker
-from bot.db_async import async_session, get_or_add_user, get_or_add_chat
+from core.db_async import async_session, get_or_add_user, get_or_add_chat
 from aiogram.enums import ChatType
 
 
