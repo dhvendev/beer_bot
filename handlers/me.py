@@ -9,17 +9,30 @@ router = Router()
 
 
 @router.message(Command('me'))
-async def cmd_me(message: Message, user: User) -> None:
-    text = mk.hbold('💭 Информация о тебе: \n\n')
-    if message.chat.type == ChatType.PRIVATE:  # Проверяем на приватность чат
-        text += mk.text(mk.hbold('🆔 Твой ID:'), mk.text(user.tg_id), '\n')
+async def cmd_me(message: Message, user: User):
+    """
+    Command /me - shows user profile information
+    """
+    header = mk.hbold(f'🍺 Твой профиль в Beer Bot 🍺\n\n')
+    
+    profile_info = ""
+    if message.chat.type == ChatType.PRIVATE:
+        profile_info += mk.text(mk.hbold('🆔 ID:'), mk.text(user.tg_id), '\n')
     else:
-        text += mk.text(mk.hbold('🆔 Твой ID:'), mk.text('В ЛС'), '\n')
-    text += mk.text(
-        mk.text(mk.hbold('⭐ Твой шанс:'), mk.text(str(user.chance)+'%.')),
-        mk.text(mk.hbold('♻️ Твой баланс:'), mk.text(str(user.money)+' крышек.')),
-        mk.text(mk.hbold('🫶 Дата регистрации:'), mk.text(user.created.strftime('%d.%m.%y'))),
+        profile_info += mk.text(mk.hbold('🆔 ID:'), mk.text('Доступно в личных сообщениях'), '\n')
+    
+    stats = mk.text(
+        mk.text(mk.hbold('🎯 Шанс успеха:'), mk.text(f'{user.chance}%')),
+        mk.text(mk.hbold('💰 Баланс:'), mk.text(f'{user.money} крышек')),
+        mk.text(mk.hbold('📅 В игре с:'), mk.text(user.created.strftime('%d.%m.%Y'))),
         sep="\n")
+    
+    tips = mk.text(
+        mk.hbold('\n\n💡 Советы:'),
+        mk.text('🔹 Увеличь свой шанс успеха в магазине /shop'),
+        mk.text('🔹 Собирай ежедневный бонус командой /box'),
+        mk.text('🔹 Испытай свою удачу командой /game'),
+        sep="\n")
+    
+    text = header + profile_info + stats + tips
     await message.answer(text, parse_mode='HTML')
-
-
