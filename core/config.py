@@ -8,6 +8,11 @@ class Settings(BaseSettings):
     DB_PORT: int
     TOKEN:str
 
+    ADMIN_USERNAME:str
+    LINK_BOT:str
+    LINK_CHAT:str
+    LINK_NEWS:str
+    
     class Config:
         env_file = ".env"
 
