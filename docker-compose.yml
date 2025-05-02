@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  bot:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: telegram-bot
+    restart: always
+    env_file:
+      - .env
+    network_mode: "host"
+    volumes:
+      - ./logs:/app/logs

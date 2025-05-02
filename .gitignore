@@ -10,4 +10,3 @@ logs
 *.log
 py_log.log
 py_log.log*
-postgres.set
